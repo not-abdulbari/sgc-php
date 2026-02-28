@@ -316,22 +316,25 @@ body {
     color: #1976d2;
     text-align: center;
 }
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .admin-container {
         flex-direction: column;
     }
 
+    /* Fix: Keep sidebar fixed as an overlay instead of relative */
     .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        transform: translateX(0);
+        width: 250px; /* Keep a fixed width */
+        height: 100vh;
+        position: fixed; /* Act as an overlay */
+        top: 0;
+        left: 0;
+        z-index: 1005; /* Ensure it sits above the top-nav */
+        transform: translateX(0); /* Open state */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2); /* Add shadow for depth */
     }
 
     .sidebar.hidden {
-        transform: translateX(-100%);
+        transform: translateX(-100%); /* Closed state */
     }
 
     .sidebar-header h2 {
@@ -343,15 +346,16 @@ body {
     }
 
     .close-btn {
-        display: block;
+        display: block; /* Show the 'X' button */
     }
 
     .main-content {
         margin-left: 0;
+        width: 100%;
     }
 
     .menu-toggle {
-        display: block;
+        display: block; /* Show hamburger menu */
     }
 
     .top-nav {
@@ -369,20 +373,5 @@ body {
     .registrations-table th,
     .registrations-table td {
         padding: 8px 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .login-card {
-        margin: 20px;
-        padding: 20px;
-    }
-
-    .top-nav h1 {
-        font-size: 1rem;
-    }
-
-    .current-team-display {
-        display: none; /* Hide on very small screens */
     }
 }

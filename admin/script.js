@@ -4,49 +4,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const openSidebarBtn = document.getElementById('openSidebar');
     const closeSidebarBtn = document.getElementById('closeSidebar');
 
-    // Mobile menu toggle functionality
-    function toggleSidebar() {
-        sidebar.classList.toggle('hidden');
-    }
+    // Make sure elements exist before adding listeners
+    if (!sidebar || !openSidebarBtn || !closeSidebarBtn) return;
 
     // Open sidebar
-    openSidebarBtn.addEventListener('click', function() {
+    openSidebarBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent the document click listener from firing immediately
         sidebar.classList.remove('hidden');
     });
 
-    // Close sidebar
+    // Close sidebar via the 'X' button
     closeSidebarBtn.addEventListener('click', function() {
         sidebar.classList.add('hidden');
     });
 
-    // Close sidebar when clicking outside on mobile
+    // Close sidebar when clicking anywhere outside of it on mobile
     document.addEventListener('click', function(event) {
         if (window.innerWidth <= 768) {
             const isClickInsideSidebar = sidebar.contains(event.target);
             const isClickOnToggle = openSidebarBtn.contains(event.target);
             
+            // If the click is outside the sidebar and not on the menu button, close it
             if (!isClickInsideSidebar && !isClickOnToggle && !sidebar.classList.contains('hidden')) {
                 sidebar.classList.add('hidden');
             }
         }
     });
 
-    // Responsive adjustments
+    // Responsive adjustments on resize and load
     function adjustLayout() {
         if (window.innerWidth > 768) {
-            sidebar.classList.remove('hidden'); // Always show sidebar on desktop
+            // Desktop: Always show sidebar
+            sidebar.classList.remove('hidden'); 
         } else {
-            // Show toggle button and hide close button when sidebar is open
-            if (!sidebar.classList.contains('hidden')) {
-                closeSidebarBtn.style.display = 'block';
-            }
+            // Mobile: Ensure sidebar starts hidden to prevent overlapping on load
+            sidebar.classList.add('hidden'); 
         }
     }
 
-    // Initial layout adjustment
+    // Initial layout adjustment on page load
     adjustLayout();
 
-    // Listen for window resize
+    // Listen for window resize to fix layout if user rotates device or resizes browser
     window.addEventListener('resize', adjustLayout);
 
     // Add confirmation for deletion actions (if any)
