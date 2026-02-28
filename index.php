@@ -86,14 +86,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akatsuki Event Registration</title>
+    <title>SGC Workshop Registration</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>AKATSUKI EVENT</h1>
+                <h1>SGC Workshop</h1>
                 <p>One Day College Event Registration</p>
             </div>
             
