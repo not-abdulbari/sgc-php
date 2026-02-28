@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             
             <div class="footer">
-                <p>©2026 SGC Workshop. All rights reserved.</p>
+                <p>©2026 Student Guidance Cell. All rights reserved.</p>
             </div>
         </div>
     </div>
