@@ -52,5 +52,34 @@ class Database {
         $stmt->execute([$roll_no]);
         return $stmt->fetch();
     }
+    // Add this method to your existing Database class in db.php
+public function getVerificationStatsByTeam() {
+    $sql = "
+        SELECT 
+            r.team,
+            COUNT(r.id) as total_registrations,
+            COALESCE(v.verified_count, 0) as verified_count
+        FROM registrations r
+        LEFT JOIN (
+            SELECT team, COUNT(*) as verified_count
+            FROM registrations reg
+            INNER JOIN verification_status vs ON reg.id = vs.registration_id
+            WHERE vs.verified = TRUE
+            GROUP BY team
+        ) v ON r.team = v.team
+        GROUP BY r.team, v.verified_count
+        ORDER BY r.team
+    ";
+    $stmt = $this->connection->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+    public function getAdminByUsername($username) {
+        $stmt = $this->connection->prepare("SELECT id, username, password_hash, created_at FROM admin WHERE username = ?");
+        $stmt->execute([$username]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ?: null; // Return the row or null if not found
+    }
+
+
 }
 ?>
