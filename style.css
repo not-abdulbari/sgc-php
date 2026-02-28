@@ -16,9 +16,10 @@ body {
 }
 
 .container {
-    width: 100%;
-    max-width: 500px;
-    padding: 2rem;
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .card {
@@ -237,17 +238,42 @@ body {
     opacity: 0.8;
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start; /* better vertical spacing on small screens */
+        padding: 1rem 0;
+    }
+
+    .container {
+        width: 95%;
+        padding: 1rem;
+    }
+
     .card {
         padding: 1.5rem;
-        margin: 1rem;
+        margin: 0;
+        border-radius: 12px;
     }
     
     .header h1 {
         font-size: 1.8rem;
     }
-    
+
+    .header p {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 0.9rem;
+    }
+
     .team-image {
         width: 120px;
         height: 120px;
