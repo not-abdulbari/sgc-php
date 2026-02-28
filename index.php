@@ -86,14 +86,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGC Workshop Registration</title>
+    <title>Akatsuki Event Registration</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>SGC Workshop</h1>
+                <h1>AKATSUKI EVENT</h1>
                 <p>One Day College Event Registration</p>
             </div>
             
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 
                 <div class="form-group">
                     <label for="department">Department</label>
-                <select id="department" name="department" required>
+                    <select id="department" name="department" required>
                         <option value="">Select your department</option>
                         <option value="AIDS">AIDS - Artificial Intelligence and Data Science</option>
                         <option value="AIML">AIML - Artificial Intelligence and Machine Learning</option>
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="IT">IT - Information Technology</option>
                         <option value="MECH">MECH - Mechanical Engineering</option>
                         <option value="Others">Others</option>
-                    </select>                
+                    </select>
                 </div>
                 
                 <div class="form-group">
@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             
             <div class="footer">
-                <p>© 2026 Student Guidance Cell. All rights reserved.</p>
+                <p>©2026 SGC Workshop. All rights reserved.</p>
             </div>
         </div>
     </div>
