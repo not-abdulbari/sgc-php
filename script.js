@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
     const resultContainer = document.getElementById('resultContainer');
