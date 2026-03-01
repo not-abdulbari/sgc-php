@@ -36,9 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (result.success) {
                 document.getElementById('message').textContent = result.message;
                 document.getElementById('teamName').textContent = result.team;
+                document.getElementById('studentName').textContent = result.name;
+                document.getElementById('studentRollNo').textContent = result.roll_no;
                 
                 // Update image source
-                teamImage.src = `teams/${result.team.toLowerCase()}.png`;
+                teamImage.src = `teams/${result.team.toLowerCase()}.webp`;
                 teamImage.alt = `${result.team} Team`;
                 
                 // Show success styling
@@ -59,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 100);
             } else {
                 document.getElementById('message').textContent = result.message;
+                document.getElementById('studentName').textContent = result.name;
+                document.getElementById('studentRollNo').textContent = result.roll_no;
                 resultContainer.className = 'result-container error';
                 resultContainer.style.display = 'block';
             }

@@ -190,6 +190,33 @@ body {
     transform: scale(1);
 }
 
+.student-info {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(40, 167, 69, 0.1);
+    border-radius: 5px;
+    text-align: left;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.student-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.student-info strong {
+    color: #ff9999;
+    margin-right: 10px;
+}
+
+.student-info span {
+    color: white;
+}
+
 .loading {
     display: none;
     text-align: center;
@@ -276,6 +303,11 @@ body {
 
     .team-image {
         width: 120px;
-        height: 120px;
+        height: 120px;  
+    }
+    
+    .student-info {
+        padding: 8px;
+        font-size: 13px;
     }
 }

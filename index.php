@@ -21,7 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($name) || empty($roll_no) || empty($department) || empty($email)) {
         $response = [
             'success' => false,
-            'message' => 'All fields are required!'
+            'message' => 'All fields are required!',
+            'name' => $name,
+            'roll_no' => $roll_no
         ];
         echo json_encode($response);
         exit;
@@ -30,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $response = [
             'success' => false,
-            'message' => 'Invalid email format!'
+            'message' => 'Invalid email format!',
+            'name' => $name,
+            'roll_no' => $roll_no
         ];
         echo json_encode($response);
         exit;
@@ -47,7 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'success' => true,
             'type' => 'existing',
             'message' => "You are already registered under Team {$existing_user['team']}",
-            'team' => $existing_user['team']
+            'team' => $existing_user['team'],
+            'name' => $name,
+            'roll_no' => $roll_no
         ];
         echo json_encode($response);
         exit;
@@ -69,14 +75,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'success' => true,
                 'type' => 'new',
                 'message' => "Registration successful! You are assigned to Team {$assigned_team}",
-                'team' => $assigned_team
+                'team' => $assigned_team,
+                'name' => $name,
+                'roll_no' => $roll_no
             ];
             echo json_encode($response);
             exit;
         } else {
             $response = [
                 'success' => false,
-                'message' => 'Registration failed. Please try again.'
+                'message' => 'Registration failed. Please try again.',
+                'name' => $name,
+                'roll_no' => $roll_no
             ];
             echo json_encode($response);
             exit;
@@ -145,6 +155,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p id="message"></p>
                 <div class="team-name" id="teamName"></div>
                 <img id="teamImage" class="team-image" src="" alt="">
+                <div id="studentInfo" class="student-info">
+                    <p><strong>Name:</strong> <span id="studentName"></span></p>
+                    <p><strong>Roll No:</strong> <span id="studentRollNo"></span></p>
+                </div>
             </div>
             
             <div class="footer">
